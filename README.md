@@ -8,7 +8,20 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+Basic configuration with a UIScrollView:
+```
+@IBOutlet weak var scrollView: UIScrollView!
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    scrollView.shouldShowScrollShadow = true
+    scrollView.shadowRadius = 10.0 // Default is 4.0
+    scrollView.shadowHeight = 10.0 // Default is 4.0
+}
+```
+
+**Even easier**: `shouldShowScrollShadow` is an `IBInspectable` so it can be set through Interface Builder.
 
 ## Installation
 
