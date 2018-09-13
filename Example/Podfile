@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FWShadowableScroll_Example' do
+  pod 'FWShadowableScroll', :path => '../'
+
+  target 'FWShadowableScroll_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
