@@ -1,0 +1,22 @@
+{
+  "name": "FWShadowableScroll",
+  "version": "0.1.0",
+  "summary": "A short description of FWShadowableScroll.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Felipe Leite/FWShadowableScroll",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Felipe Leite": "felipe.leite.gv@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Felipe Leite/FWShadowableScroll.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "FWShadowableScroll/Classes/**/*"
+}

@@ -1,0 +1,6 @@
+framework module FWShadowableScroll {
+  umbrella header "FWShadowableScroll-umbrella.h"
+
+  export *
+  module * { export * }
+}
