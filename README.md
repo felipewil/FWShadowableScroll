@@ -22,7 +22,7 @@ pod 'FWShadowableScroll'
 
 ## Author
 
-Felipe Leite, felipe.leite.gv@gmail.com
+Felipe Leite, felipewil@icloud.com
 
 ## License
 

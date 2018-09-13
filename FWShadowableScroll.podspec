@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'FWShadowableScroll'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of FWShadowableScroll.'
+  s.summary          = 'UIScrollView extension to add a top shadow while scrolling.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
