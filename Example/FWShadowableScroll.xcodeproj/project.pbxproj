@@ -15,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		9BC97B0E214ADBF90024647C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC97B0D214ADBF90024647C /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		698EB347B8A95127A5C425E9 /* Pods-FWShadowableScroll_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWShadowableScroll_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FWShadowableScroll_Tests/Pods-FWShadowableScroll_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		85A1520A30B9062AFD8EB297 /* Pods_FWShadowableScroll_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FWShadowableScroll_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9B8941A904A1F6D9DDB369 /* Pods-FWShadowableScroll_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWShadowableScroll_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FWShadowableScroll_Example/Pods-FWShadowableScroll_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		9BC97B0D214ADBF90024647C /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		F1EB3839E863C198BFE22ADD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				9BC97B0D214ADBF90024647C /* CollectionViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BC97B0E214ADBF90024647C /* CollectionViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

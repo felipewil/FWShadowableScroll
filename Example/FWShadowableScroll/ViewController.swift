@@ -11,9 +11,15 @@ import FWShadowableScroll
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.shouldShowScrollShadow = true
+        tableView.shadowRadius = 4.0
+        tableView.shadowHeight = 4.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,3 +29,23 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController : UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = indexPath.row == 0 ? "ScrollViewCell" : "CollectionViewCell"
+        return tableView.dequeueReusableCell(withIdentifier: identifier)!
+    }
+    
+}
+
+extension ViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+}
