@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FWShadowableScroll
 
 class ViewController: UIViewController {
 

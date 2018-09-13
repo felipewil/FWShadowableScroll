@@ -1,0 +1,16 @@
+PODS:
+  - FWShadowableScroll (0.1.0)
+
+DEPENDENCIES:
+  - FWShadowableScroll (from `../`)
+
+EXTERNAL SOURCES:
+  FWShadowableScroll:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FWShadowableScroll: 107d14dfbd54547d2434d3cba2bb2128cd58bf96
+
+PODFILE CHECKSUM: 8f3153bedd3569ecbad6d0c951e4f22bb10a718a
+
+COCOAPODS: 1.4.0

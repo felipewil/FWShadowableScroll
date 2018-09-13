@@ -28,8 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DD2946AEB8B523BDF32E157 /* FWShadowableScroll.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = FWShadowableScroll.podspec; path = ../FWShadowableScroll.podspec; sourceTree = "<group>"; };
-		340E64CE6CD7EB33300D50F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0DD2946AEB8B523BDF32E157 /* FWShadowableScroll.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FWShadowableScroll.podspec; path = ../FWShadowableScroll.podspec; sourceTree = "<group>"; };
+		340E64CE6CD7EB33300D50F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3906EE444F0548A9C7A96278 /* Pods_FWShadowableScroll_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FWShadowableScroll_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FC3786DD651A28277BB5371 /* Pods-FWShadowableScroll_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWShadowableScroll_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FWShadowableScroll_Tests/Pods-FWShadowableScroll_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* FWShadowableScroll_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWShadowableScroll_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +46,7 @@
 		698EB347B8A95127A5C425E9 /* Pods-FWShadowableScroll_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWShadowableScroll_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FWShadowableScroll_Tests/Pods-FWShadowableScroll_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		85A1520A30B9062AFD8EB297 /* Pods_FWShadowableScroll_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FWShadowableScroll_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9B8941A904A1F6D9DDB369 /* Pods-FWShadowableScroll_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FWShadowableScroll_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FWShadowableScroll_Example/Pods-FWShadowableScroll_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F1EB3839E863C198BFE22ADD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F1EB3839E863C198BFE22ADD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +215,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 6J86C6MHA9;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -517,13 +518,16 @@
 			baseConfigurationReference = 8B9B8941A904A1F6D9DDB369 /* Pods-FWShadowableScroll_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6J86C6MHA9;
 				INFOPLIST_FILE = FWShadowableScroll/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -532,13 +536,16 @@
 			baseConfigurationReference = 6639A5053163529D2DEF9AD9 /* Pods-FWShadowableScroll_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6J86C6MHA9;
 				INFOPLIST_FILE = FWShadowableScroll/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
