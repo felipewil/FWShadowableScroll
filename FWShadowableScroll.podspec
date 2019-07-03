@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FWShadowableScroll'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'UIScrollView extension to add a top shadow while scrolling.'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
-  s.swift_version = '3.2'
+  s.swift_version = '4.2'
 
   s.source_files = 'FWShadowableScroll/Classes/**/*'
   

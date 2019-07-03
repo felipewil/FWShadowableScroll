@@ -13,12 +13,13 @@ import UIKit
  Keys for value association.
  */
 fileprivate struct AssociationKeys {
-    static var show         = "show"
-    static var observer     = "observer"
-    static var shadowLayer  = "shadowLayer"
-    static var shadowView   = "shadowView"
+    static var show = "show"
+    static var observer = "observer"
+    static var shadowLayer = "shadowLayer"
+    static var shadowView = "shadowView"
     static var shadowHeight = "shadowHeight"
     static var shadowRadius = "shadowRadius"
+    static var topConstraint = "topConstraint"
 }
 
 /**
@@ -30,9 +31,7 @@ fileprivate struct AssociationKeys {
  */
 private class UIScrollViewObserverHelper : NSObject {
     
-    /**
-     ContentOffset property key path.
-     */
+    /// ContentOffset property key path.
     private let ContentOffsetKeyPath = "contentOffset"
     
     // MARK: - Variables
@@ -122,10 +121,7 @@ private class UIScrollViewObserverHelper : NSObject {
         }
     }
 
-    
-    /**
-     The shadow radius. By default it is 4.0.
-    */
+    /// The shadow radius. By default it is 4.0.
     var shadowRadius: CGFloat {
         get { return objc_getAssociatedObject(self, &AssociationKeys.shadowRadius) as? CGFloat ?? 4.0 }
         set {
@@ -138,9 +134,7 @@ private class UIScrollViewObserverHelper : NSObject {
         }
     }
     
-    /**
-     The shadow layer created when `shouldShowScrollShadow` property is set to `true`.
-     */
+    /// The shadow layer created when `shouldShowScrollShadow` property is set to `true`.
     private var shadowLayer: CALayer? {
         get {
             if let shadowLayer = objc_getAssociatedObject(self, &AssociationKeys.shadowLayer) as? CALayer {
@@ -157,9 +151,7 @@ private class UIScrollViewObserverHelper : NSObject {
         set { objc_setAssociatedObject(self, &AssociationKeys.shadowLayer, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
-    /**
-     A view created to hold the shadow layer. It is added above the scroll view.
-     */
+    /// A view created to hold the shadow layer. It is added above the scroll view.
     private var shadowView: UIView? {
         get {
             if let shadowView = objc_getAssociatedObject(self, &AssociationKeys.shadowView) as? UIView {
@@ -176,15 +168,21 @@ private class UIScrollViewObserverHelper : NSObject {
         set { objc_setAssociatedObject(self, &AssociationKeys.shadowView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
+    /// Helper Object to observe contentOffset changes.
     private var scrollViewObserverHelper: UIScrollViewObserverHelper? {
         get { return objc_getAssociatedObject(self, &AssociationKeys.observer) as? UIScrollViewObserverHelper }
         set { objc_setAssociatedObject(self, &AssociationKeys.observer, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
+    private var topConstraint: NSLayoutConstraint? {
+        get { return objc_getAssociatedObject(self, &AssociationKeys.topConstraint) as? NSLayoutConstraint }
+        set { objc_setAssociatedObject(self, &AssociationKeys.topConstraint, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
     // MARK: - Private helpers
     
     private func createShadowView() -> UIView {
-        let height: CGFloat = shadowHeight * 2.5
+        let height = shadowHeight * 2.5
         let viewFrame = CGRect(x: self.frame.origin.x,
                                y: self.frame.origin.y,
                                width: self.frame.size.width,
@@ -228,10 +226,14 @@ private class UIScrollViewObserverHelper : NSObject {
         
         superview.insertSubview(shadowView, aboveSubview: self)
         
-        makeConstraint(for: shadowView, to: self, using: .left)
-        makeConstraint(for: shadowView, to: self, using: .right)
-        makeConstraint(for: shadowView, to: self, using: .top)
-        makeConstraint(for: shadowView, to: nil, using: .height, withConstant: shadowView.frame.size.height)
+        NSLayoutConstraint.activate([
+            shadowView.leftAnchor.constraint(equalTo: leftAnchor),
+            shadowView.rightAnchor.constraint(equalTo: rightAnchor),
+            shadowView.heightAnchor.constraint(equalToConstant: shadowView.frame.size.height)
+        ])
+
+        topConstraint = shadowView.topAnchor.constraint(equalTo: topAnchor)
+        topConstraint?.isActive = true
         
         scrollViewObserverHelper = UIScrollViewObserverHelper(scrollView: self) { [ weak self ] in
             self?.updateShadow()
@@ -241,20 +243,51 @@ private class UIScrollViewObserverHelper : NSObject {
     private func makeConstraint(for item: UIView,
                                 to toItem: UIView?,
                                 using attribute: NSLayoutAttribute,
-                                withConstant constant: CGFloat = 0.0) {
+                                withConstant constant: CGFloat = 0.0) -> NSLayoutConstraint {
         let toItemAttribute = attribute == .height ? .notAnAttribute : attribute
-        
-        NSLayoutConstraint(item: item,
-                           attribute: attribute,
-                           relatedBy: .equal,
-                           toItem: toItem,
-                           attribute: toItemAttribute,
-                           multiplier: 1.0,
-                           constant: constant).isActive = true
+        let constraint = NSLayoutConstraint(item: item,
+                                            attribute: attribute,
+                                            relatedBy: .equal,
+                                            toItem: toItem,
+                                            attribute: toItemAttribute,
+                                            multiplier: 1.0,
+                                            constant: constant)
+        constraint.isActive = true
+        return constraint
     }
     
     private func updateShadow() {
-        let shadowHeight = min(contentOffset.y / 3, self.shadowHeight)
+        if let tableView = self as? UITableView, tableView.style == .plain {
+            updateTableViewShadow(tableView)
+        }
+        else {
+            tryUpdateShadow(withHeight: contentOffset.y)
+        }
+    }
+    
+    private func updateTableViewShadow(_ tableView: UITableView) {
+        guard let section = tableView.indexPathsForVisibleRows?.first?.section else { return }
+        
+        let sectionRect = tableView.rect(forSection: section)       
+        let headerRect = headerFrame(atSection: section, from: tableView)
+        let nextHeaderRect = headerFrame(atSection: section + 1, from: tableView)
+        let sectionOffset = contentOffset.y - sectionRect.origin.y
+        let remaining = nextHeaderRect.height > 0.0 ? max(sectionRect.size.height - headerRect.size.height - sectionOffset, 0) : CGFloat.greatestFiniteMagnitude
+
+        topConstraint?.constant = min(sectionRect.maxY - contentOffset.y, headerRect.height)
+        
+        let offset = headerRect.height > 0.0 ? sectionOffset : contentOffset.y
+        let shadowHeight = max(min(offset, remaining), 0)
+        tryUpdateShadow(withHeight: shadowHeight)
+    }
+    
+    private func headerFrame(atSection section: Int, from tableView: UITableView) -> CGRect {
+        guard section < tableView.numberOfSections else { return .zero }
+        return tableView.rectForHeader(inSection: section)
+    }
+    
+    private func tryUpdateShadow(withHeight height: CGFloat) {
+        let shadowHeight = min(height / 3, self.shadowHeight)
         let shadowPath = CGRect(x: 0.0,
                                 y: 0.0,
                                 width: frame.size.width,

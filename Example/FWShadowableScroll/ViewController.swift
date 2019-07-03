@@ -32,11 +32,19 @@ class ViewController: UIViewController {
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = indexPath.row == 0 ? "ScrollViewCell" : "CollectionViewCell"
+        let identifier: String
+        
+        switch indexPath.row {
+        case 0: identifier = "ScrollViewCell"
+        case 1: identifier = "CollectionViewCell"
+        case 2: identifier = "GroupedTableViewCell"
+        default: identifier = ""
+        }
+        
         return tableView.dequeueReusableCell(withIdentifier: identifier)!
     }
     
