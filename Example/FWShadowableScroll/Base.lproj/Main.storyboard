@@ -12,7 +12,7 @@
         <!--UITableView-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="UITableView" id="vXZ-lx-hvc" customClass="ViewController" customModule="FWShadowableScroll_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="UITableView" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="FWShadowableScroll_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -112,7 +112,7 @@
         <!--Grouped Table View Controller-->
         <scene sceneID="ba3-rF-MyC">
             <objects>
-                <viewController id="Xxr-xc-WNN" customClass="GroupedTableViewController" customModule="FWShadowableScroll_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xxr-xc-WNN" customClass="GroupedTableViewController" customModule="FWShadowableScroll_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dOp-1M-s6T"/>
                         <viewControllerLayoutGuide type="bottom" id="gIs-Kx-4DF"/>
@@ -169,7 +169,7 @@
         <!--UICollectionView-->
         <scene sceneID="cTx-El-eT4">
             <objects>
-                <viewController title="UICollectionView" id="NdP-xs-eD7" customClass="CollectionViewController" customModule="FWShadowableScroll_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="UICollectionView" automaticallyAdjustsScrollViewInsets="NO" id="NdP-xs-eD7" customClass="CollectionViewController" customModule="FWShadowableScroll_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q2A-I5-Qvj"/>
                         <viewControllerLayoutGuide type="bottom" id="Vey-jQ-KRi"/>
@@ -221,7 +221,7 @@
         <!--UIScrollView-->
         <scene sceneID="r62-vm-HGO">
             <objects>
-                <viewController title="UIScrollView" id="qPC-Fz-hPt" sceneMemberID="viewController">
+                <viewController title="UIScrollView" automaticallyAdjustsScrollViewInsets="NO" id="qPC-Fz-hPt" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hKk-S9-y5C"/>
                         <viewControllerLayoutGuide type="bottom" id="mIa-Mi-b62"/>

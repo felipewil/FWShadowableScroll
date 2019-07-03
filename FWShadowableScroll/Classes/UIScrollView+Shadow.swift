@@ -112,7 +112,7 @@ private class UIScrollViewObserverHelper : NSObject {
     var shadowHeight: CGFloat {
         get { return objc_getAssociatedObject(self, &AssociationKeys.shadowHeight) as? CGFloat ?? 4.0 }
         set {
-            objc_setAssociatedObject(self, &AssociationKeys.shadowHeight, newValue, .OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &AssociationKeys.shadowHeight, newValue as NSNumber, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             guard shouldShowScrollShadow else { return }
             
@@ -125,7 +125,7 @@ private class UIScrollViewObserverHelper : NSObject {
     var shadowRadius: CGFloat {
         get { return objc_getAssociatedObject(self, &AssociationKeys.shadowRadius) as? CGFloat ?? 4.0 }
         set {
-            objc_setAssociatedObject(self, &AssociationKeys.shadowRadius, newValue, .OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &AssociationKeys.shadowRadius, newValue as NSNumber, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             guard shouldShowScrollShadow else { return }
             
