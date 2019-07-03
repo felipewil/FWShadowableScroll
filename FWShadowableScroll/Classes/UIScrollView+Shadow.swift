@@ -240,22 +240,6 @@ private class UIScrollViewObserverHelper : NSObject {
         }
     }
     
-    private func makeConstraint(for item: UIView,
-                                to toItem: UIView?,
-                                using attribute: NSLayoutAttribute,
-                                withConstant constant: CGFloat = 0.0) -> NSLayoutConstraint {
-        let toItemAttribute = attribute == .height ? .notAnAttribute : attribute
-        let constraint = NSLayoutConstraint(item: item,
-                                            attribute: attribute,
-                                            relatedBy: .equal,
-                                            toItem: toItem,
-                                            attribute: toItemAttribute,
-                                            multiplier: 1.0,
-                                            constant: constant)
-        constraint.isActive = true
-        return constraint
-    }
-    
     private func updateShadow() {
         if let tableView = self as? UITableView, tableView.style == .plain {
             updateTableViewShadow(tableView)
