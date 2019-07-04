@@ -6,7 +6,7 @@
 
 ## Example
 
-![](https://thumbs.gfycat.com/AlarmingShockedGelada-size_restricted.gif)
+![](https://thumbs.gfycat.com/IndelibleMemorableAustralianfurseal-size_restricted.gif)
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
